@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.redsocial.entidad.Categoria;
-import com.redsocial.entidad.Modalidad;
 import com.redsocial.entidad.Proveedor;
 import com.redsocial.servicio.CategoriaServicio;
 import com.redsocial.servicio.ProveedorServicio;
@@ -42,7 +41,7 @@ public class ProveedorController {
 		if(aux == null) {
 			session.setAttribute("MENSAJE", "Registro erróneo");
 		}else {
-			session.setAttribute("MENSAJE", "Registro exitos");
+			session.setAttribute("MENSAJE", "Registro exitoso");
 		}
 		return "redirect:verProveedor";
 	}

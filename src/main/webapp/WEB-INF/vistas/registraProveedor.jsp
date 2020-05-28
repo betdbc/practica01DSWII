@@ -29,19 +29,19 @@
 			<input type="hidden" name="metodo" value="registra">	
 			<div class="form-group">
 				<label class="control-label" for="id_raz_social_proveedor">Razón social Proveedor</label>
-				<input class="form-control" type="text" id="id_raz_social_proveedor" name="rSocial" placeholder="Ingrese la Razon social">
+				<input class="form-control" type="text" id="id_raz_social_proveedor" name="raz_social_proveedor" placeholder="Ingrese la Razon social">
 			</div>
 			<div class="form-group">
 				<label class="control-label" for="id_dir_proveedor">Direccion Proveedor</label>
-				<input class="form-control" id="id_dir_proveedor" name="dirProveedor" placeholder="Ingrese la direccion del proveedor" type="text" />
+				<input class="form-control" id="id_dir_proveedor" name="dir_proveedor" placeholder="Ingrese la direccion del proveedor" type="text" />
 			</div>
 			<div class="form-group">
 				<label class="control-label" for="id_ruc_proveedor">Ruc Proveedor</label>
-				<input class="form-control" id="id_ruc_proveedor" name="rucProveedor" placeholder="Ingrese el ruc Proveedor" type="text" />
+				<input class="form-control" id="id_ruc_proveedor" name="ruc_proveedor" placeholder="Ingrese el ruc Proveedor" type="text" />
 			</div>
 			<div class="form-group">
 				<label class="control-label" for="id_fecReg">Fecha Registro Proveedor</label>
-				<input class="form-control" id="id_fecReg" name="fecReg" placeholder="Ingrese la fecha Reg" type="text" />
+				<input class="form-control" id="id_fecReg" name="fec_reg_proveedor" placeholder="Ingrese la fecha Reg" type="text" />
 			</div>
 			<div class="form-group">
 				<label class="control-label" for="id_categoria">Categoria</label>
@@ -71,6 +71,14 @@ $("#success-alert").fadeTo(1000, 500).slideUp(500, function(){
 });
 </script>
 
+
+
+<script type="text/javascript">
+$("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+    $("#success-alert").slideUp(500);
+});
+</script>
+
 <script type="text/javascript">
 
 $('#id_form').bootstrapValidator({
@@ -81,7 +89,7 @@ $('#id_form').bootstrapValidator({
         validating: 'glyphicon glyphicon-refresh'
     },
     fields: {
-    	rSocial: {
+    	raz_social_proveedor: {
     		selector : '#id_raz_social_proveedor',
             validators: {
                 notEmpty: {
@@ -94,7 +102,7 @@ $('#id_form').bootstrapValidator({
                 }
             }
         },
-        dirProveedor: {
+        dir_proveedor: {
     		selector : '#id_dir_proveedor',
             validators: {
                 notEmpty: {
@@ -107,20 +115,35 @@ $('#id_form').bootstrapValidator({
                 }
             }
         },
-        rucProveedor: {
-    		selector : '#id_ruc_proveedor',
-            validators: {
-            	notEmpty: {
-                    message: 'El ruc Proveedor es un campo obligatorio'
+        ruc_proveedor: {
+        	selector : '#id_ruc_proveedor',
+        	validators :{
+                notEmpty :{
+                     message : 'El alias es obligatorio'
                 },
-                stringLength :{
-                	message:'El ruc Proveedor es de 11 caracteres',
-                	min : 11
+                regexp: {
+                     regexp: /^[0-9]{11}$/,
+                     message: 'El RUC tiene 11 dígitos'
+                 }
+            }        
+        },
+
+      
+
+        fec_reg_proveedor: {
+        	selector : '#id_fecReg',
+            validators: {
+                notEmpty: {
+                    message: 'La fecha es obligatoria'
+                },
+                date: {
+                    format: 'YYYY-MM-DD',
+                    message:"El formato debe ser de año-mes-dia"
                 }
             }
         },
 
-        deporte: {
+        id_categoria: {
     		selector : '#id_categoria',
             validators: {
             	notEmpty: {
@@ -130,12 +153,6 @@ $('#id_form').bootstrapValidator({
         },
     	
     }   
-});
-</script>
-
-<script type="text/javascript">
-$("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
-    $("#success-alert").slideUp(500);
 });
 </script>
 
